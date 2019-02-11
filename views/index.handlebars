@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="jumbotron mt-4 mdb-color darken">
+        <h2 class="display-4 text-white">Reddit NBA News</h2>
+        <p class="lead text-white">All the news scraped from /r/NBA.</p>
+        <hr class="my-4">
+        <a class="btn orange" href="/scrape">Find Articles</a>
+        <a class="btn blue" href="/article/clear">Clear Articles</a>
+        <a class="btn green" href="/article/saved">View Saved</a>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Card -->
+    {{#each dbArticle}}
+    <div class="card my-4 mdb-color lighten-5">
+        <!-- Card content -->
+        <div class="card-body">
+            <!-- Title -->
+            <h4 class="card-title"><a href="{{link}}">{{title}}</a></h4>
+            <!-- Text -->
+            <p class="card-text">{{summary}}</p>
+            <!-- Button -->
+            <a href="/article/detail/{{_id}}" class="btn orange btn-sm text-right">Comment</a>
+            {{#if saved}}
+                <a class="btn blue btn-sm" href="/article/unsave/{{_id}}">Unsave</a>
+            {{else}}
+                <a class="btn green btn-sm" href="/article/save/{{_id}}">Save</a>
+            {{/if}}
+            <a class="btn btn-danger btn-sm" href="/article/delete/{{_id}}">Remove</a>
+        </div>
+    </div>
+    <!-- Card -->
+    {{/each}}
+</div>

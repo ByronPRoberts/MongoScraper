@@ -1,0 +1,61 @@
+<div class="container">
+    <!-- Card -->
+    <div class="card my-4 mdb-color lighten-5">
+        <!-- Card content -->
+        <div class="card-body">
+            <!-- Title -->
+            <h4 class="card-title"><a href="{{link}}">{{title}}</a></h4>
+            <!-- Text -->
+            <p class="card-text">{{summary}}</p>
+            <!-- Button -->
+            <a href="/" class="btn orange btn-sm text-right">Home</a>
+            {{#if saved}}
+                <a class="btn blue btn-sm" href="/article/unsave/{{_id}}">Unsave</a>
+            {{else}}
+                <a class="btn green btn-sm" href="/article/save/{{_id}}">Save</a>
+            {{/if}}
+            <a class="btn btn-danger btn-sm" href="/article/delete/{{_id}}">Remove</a>
+        </div>
+    </div>
+    <!-- Card -->
+</div>
+
+<div class="container">
+    <!-- Card -->
+    <div class="card my-4 mdb-color lighten-5">
+        <!-- Card content -->
+        <div class="card-body">
+            <!-- Title -->
+            <h4 class="card-title">Commments</h4>
+            <hr>
+            {{#each notes}}
+                <p>{{name}} says:</p>
+                <p>{{body}}</p>
+                <a class="btn btn-danger btn-sm" href="/comment/delete/{{_id}}">Delete</a>
+                <hr>
+            {{/each}}
+        </div>
+    </div>
+    <!-- Card -->
+</div>
+
+<div class="container">
+    <!-- Default form contact -->
+    <form class="text-center border border-light p-5 mdb-color lighten-5" method="post" action="/articles/comment/{{_id}}" id="comment">
+
+        <p class="h4 mb-4">Add Comment</p>
+
+        <!-- Name -->
+        <input type="text"class="form-control mb-4" placeholder="Name" id="name" name="name">
+
+        <!-- Message -->
+        <div class="form-group">
+            <textarea class="form-control rounded-0"rows="3" placeholder="Message" id="body" name="body"></textarea>
+        </div>
+
+        <!-- Send button -->
+        <button class="btn blue-gradient btn-block" type="submit">Submit</button>
+
+    </form>
+<!-- Default form contact -->
+</div>
